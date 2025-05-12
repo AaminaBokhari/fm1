@@ -8,24 +8,23 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #09090b;
   color: #f4f4f5;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 25%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-pre {
+code, pre {
   font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', Consolas, monospace;
   font-size: 0.9rem;
   line-height: 1.5;
 }
 
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -37,12 +36,13 @@ pre {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(16, 185, 129, 0.3);
   border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(16, 185, 129, 0.5);
 }
 
 /* Animations */
@@ -64,9 +64,46 @@ pre {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Transitions */
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
+/* Glass effect */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(24, 24, 27, 0.7);
+}
+
+/* Custom focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2 focus:ring-offset-zinc-900;
+}
+
+/* Input styles */
+input, textarea {
+  @apply focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-shadow duration-200;
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus-ring;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white shadow-lg shadow-emerald-900/20;
+}
+
+/* Card styles */
+.card {
+  @apply bg-zinc-900/90 backdrop-blur border border-zinc-800/50 rounded-xl shadow-xl shadow-emerald-900/10;
+}
+
+/* Tab styles */
+.tab {
+  @apply px-4 py-2 text-sm font-medium transition-colors duration-200;
+}
+
+.tab-active {
+  @apply text-emerald-400 border-b-2 border-emerald-500;
+}
+
+/* Code block styles */
+.code-block {
+  @apply bg-zinc-950/90 rounded-lg p-4 font-mono text-sm border border-zinc-800/50;
 }
